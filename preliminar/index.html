@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMSystem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alice&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #b04246;
+      --color-black: #090b17;
+      --color-bg: #fbf9fa;
+      --color-white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Helvetica, Arial, sans-serif; color: var(--color-black); background: var(--color-bg); }
+    img { max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* Header */
+    .site-header { background: var(--color-bg); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 15px; color: var(--color-black); font-weight: 400; }
+    .nav-links a:hover { color: var(--color-primary); }
+    .header-logo { height: 40px; }
+    .header-cta { display: inline-block; padding: 10px 24px; background: var(--color-primary); color: var(--color-white); border-radius: 4px; font-size: 14px; font-weight: 600; }
+    .header-cta:hover { opacity: 0.85; }
+
+    /* Hero */
+    .section-hero { text-align: center; padding: 60px 24px 40px; background: var(--color-bg); }
+    .section-hero h1 { font-family: 'Alice', sans-serif; font-size: 70px; font-weight: 400; line-height: 1.1; margin-bottom: 16px; }
+    .section-hero p { font-size: 22px; color: #555; max-width: 570px; margin: 0 auto; }
+    .btn-primary { display: inline-block; padding: 14px 36px; background: var(--color-primary); color: var(--color-white); font-size: 16px; font-weight: 600; border-radius: 4px; margin-top: 28px; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.85; }
+
+    /* Hero image */
+    .hero-image { width: 100%; height: 400px; background: url('https://cdn.looka.com/assets-db/industry_photos/programming/1.jpg') center/cover no-repeat; }
+
+    /* Offering */
+    .section-offering { text-align: center; padding: 60px 24px 20px; background: var(--color-bg); }
+    .section-offering .label { color: var(--color-primary); font-size: 14px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+    .section-offering h2 { font-family: 'Alice', sans-serif; font-size: 46px; font-weight: 400; max-width: 530px; margin: 0 auto; }
+
+    .offering-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 40px auto; padding: 0 24px; }
+    .offering-card { text-align: left; }
+    .offering-card .card-image { width: 100%; height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px; }
+    .offering-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .offering-card p { font-size: 15px; color: #555; line-height: 1.5; }
+
+    /* Testimonial */
+    .section-testimonial { background: var(--color-bg); padding: 60px 24px; text-align: center; }
+    .section-testimonial blockquote { font-family: 'Noto Serif', serif; font-size: 40px; font-weight: 400; line-height: 1.5; max-width: 970px; margin: 0 auto 16px; color: var(--color-black); }
+    .section-testimonial .author { font-family: 'Noto Serif', serif; font-size: 17px; color: #555; }
+
+    /* CTA */
+    .section-cta { text-align: center; padding: 60px 24px; background: var(--color-bg); }
+    .section-cta h2 { font-size: 28px; font-weight: 400; max-width: 670px; margin: 0 auto 24px; line-height: 1.4; }
+
+    /* Footer */
+    .site-footer { background: var(--color-bg); padding: 40px 24px; border-top: 1px solid #e0e0e0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+    .footer-logo { height: 48px; }
+    .footer-nav { display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a { font-size: 14px; color: var(--color-black); }
+    .footer-nav a:hover { color: var(--color-primary); }
+    .footer-social { display: flex; flex-direction: column; gap: 8px; }
+    .footer-social a { font-size: 14px; font-weight: 700; color: var(--color-black); }
+    .footer-social a:hover { color: var(--color-primary); }
+    .footer-contact { font-size: 14px; font-weight: 700; line-height: 1.8; color: var(--color-black); }
+
+    @media (max-width: 768px) {
+      .section-hero h1 { font-size: 36px; }
+      .section-offering h2 { font-size: 30px; }
+      .offering-grid { grid-template-columns: 1fr; }
+      .section-testimonial blockquote { font-size: 24px; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#offering">Offering</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#"><img src="https://s3.ca-central-1.amazonaws.com/logojoy/logos/229512367/noBgBlack.png" alt="IMSystem" class="header-logo"></a>
+      <a href="#contact" class="header-cta">Contact us</a>
+    </div>
+  </header>
+
+  <section class="section-hero">
+    <h1>Innovative &amp; empowering.</h1>
+    <p>The modern world runs on the power of programming.</p>
+    <a href="#contact" class="btn-primary">Contact us</a>
+  </section>
+
+  <div class="hero-image"></div>
+
+  <section class="section-offering" id="offering">
+    <p class="label">Our Offering</p>
+    <h2>Programming for every purpose</h2>
+  </section>
+
+  <div class="offering-grid">
+    <div class="offering-card">
+      <div class="card-image" style="background-image: url('https://cdn.looka.com/assets-db/industry_photos/programming/2.jpg');"></div>
+      <h3>App development</h3>
+      <p>Apps empower your business to tap into the booming mobile market.</p>
+    </div>
+    <div class="offering-card">
+      <div class="card-image" style="background-image: url('https://cdn.looka.com/assets-db/industry_photos/programming/3.jpg');"></div>
+      <h3>Website building</h3>
+      <p>A website is essential to remaining competitive in the digital age.</p>
+    </div>
+    <div class="offering-card">
+      <div class="card-image" style="background-image: url('https://cdn.looka.com/assets-db/industry_photos/programming/4.jpg');"></div>
+      <h3>General-purpose coding</h3>
+      <p>No matter your coding needs, IMSystem can tackle any job easily.</p>
+    </div>
+  </div>
+
+  <section class="section-testimonial">
+    <blockquote>Whenever I need any help with programming, IMSystem is the place I go.</blockquote>
+    <p class="author">- Jane Smith</p>
+  </section>
+
+  <section class="section-cta" id="contact">
+    <h2>If you need programming services or have any interest in IMSystem, get in touch with us.</h2>
+    <a href="#contact" class="btn-primary">Contact us</a>
+  </section>
+
+  <footer class="site-footer" id="about">
+    <div class="footer-inner">
+      <a href="#"><img src="https://s3.ca-central-1.amazonaws.com/logojoy/logos/229512367/noBgColor.png" alt="IMSystem" class="footer-logo"></a>
+      <nav class="footer-nav">
+        <a href="#">Home</a>
+        <a href="#offering">Offering</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="http://facebook.com" target="_blank">Facebook</a>
+        <a href="http://twitter.com" target="_blank">Twitter</a>
+        <a href="http://instagram.com" target="_blank">Instagram</a>
+        <a href="http://linkedin.com" target="_blank">Linkedin</a>
+      </div>
+      <div class="footer-contact">
+        416 887 5555<br>
+        123 address st.<br>
+        email@example.com<br>
+        yourwebsite.com
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
